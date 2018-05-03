@@ -1,0 +1,16 @@
+FROM rocker/r-ver
+
+LABEL maintainer="Roel M. Hogervorst <hogervorst.rm@gmail.com>"
+
+# A very basic container build on base with 
+# tidyverse tools included, however without rstudio server.
+
+RUN apt-get update \ 
+    && apt-get install -y --no-install-recommends \
+    libcurl4-openssl-dev \
+    libssl-dev \ 
+    lsb-release \
+    libxml2-dev \ 
+    && install2.r --error \
+    codetools \
+        loggit
